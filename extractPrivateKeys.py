@@ -19,7 +19,7 @@ except ImportError:
 def extractRSAKey(data):
     keybytes = base64.b64decode(data)
     offset = keybytes.find(b"ssh-rsa")
-    if not offset:
+    if offset == -1:
         print("[!] No valid RSA key found")
         return None
     keybytes = keybytes[offset:]
